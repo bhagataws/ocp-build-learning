@@ -18,9 +18,7 @@ def review():
 def course():
     return "Course"
 
-@app.route("/contact")
-def contact():
-    return "Contact"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
