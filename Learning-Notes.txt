@@ -1,0 +1,12 @@
+oc new-app example:latest --name=flask-app :- Create app from existing image
+oc rsh flask-app-678879c4bc-884fq :- login to pods shell
+oc expose service flask-app :- Expose the Service and route create
+oc start-build flask-app --follow :- Manually start the build 
+oc get bc,is,build  :- Get BuildConfig, Build and image stream
+
+oc set triggers deployment/flask-app --from-image=example:latest   -c example :- Set auto rollout from image update
+
+In BuildConfig, we need to specify:
+
+1. How the container image should be built and where the resulting image should be pushed (either to an ImageStream in the internal OpenShift registry or to an external image repository).
+2. Which base/builder image should be used to initiate the build process.
